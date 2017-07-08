@@ -32,7 +32,7 @@ body {
   }
 
   @include md {
-    padding: 4rem;
+    padding: 0;
   }
 }
 
@@ -81,16 +81,10 @@ button:hover {
 
 .Menu {
   align-items: center;
-  border-bottom: 1px solid $grey-border;
   display: flex;
   justify-content: space-between;
-  padding-bottom: 2rem;
-  margin: 0 auto 2rem;
-  max-width: 60rem;
 
   @include lg {
-    margin-left: 20rem;
-    margin: 0 0 2rem 20rem;
     padding-bottom: 0;
   }
 }
@@ -122,33 +116,27 @@ button:hover {
 .Menu-link {
   display: inline-block;
   font-family: $font-family-serif;
-  font-style: italic;
-  margin-left: 1.5rem;
-  line-height: 3rem;
+  line-height: 1rem;
   text-decoration: none;
+  margin-right: 1em;
+  * {
+    color: #eee;
+  }
 
   @include md {
-    margin-left: 3rem;
   }
 
   @include lg {
-    margin: 0 3rem 0 0;
-    line-height: 7.5rem;
+    line-height: 4rem;
   }
 }
 
 .Menu-link--active {
-  color: $black;
-}
-
-.Page {
-  max-width: 60rem;
-  margin: 0 auto;
-
-  @include lg {
-    margin: 0 0 0 20rem;
+  * {
+    color: #fff;
   }
 }
+
 
 .Example {
   background: #F6F8FA;
@@ -177,4 +165,66 @@ hr {
   border: 0;
   border-top: 1px solid $grey-border;
   margin: 2rem 0;
+}
+
+.content {
+  width: 90%;
+  margin: auto;
+  @include sm {
+    width: 90%;
+  }
+  @include md {
+    width: 50%;
+  }
+  @include lg {
+    width: 30%;
+  }
+  @include xl {
+    width: 20%;
+  }
+}
+
+.content > * {
+  width: 100% !important;
+}
+
+.center-box {
+  text-align: center;
+  margin-top: 20px;
+  @include sm {
+    margin-top: 50px;
+  }
+  @include md {
+    margin-top: 100px;
+  }
+  @include lg {
+    margin-top: 150px;
+  }
+  @include xl {
+    margin-top: 200px;
+  }
+}
+
+.nav-button {
+  border: 1px solid #eee !important;
+  border-radius: 15px !important;
+  * {
+    font-weight: 800 !important;
+  }
+}
+
+.nav-button:hover {
+  *{ color: #00bcd4; }
+}
+
+.home-link {
+  color: #fff;
+  font-weight: 800;
+  text-shadow: 1px 1px 2px #eee;
+  text-decoration: none;
+}
+
+.home-link:hover {
+  color: #fff;
+  text-shadow: 1px 1px 3px #eee;
 }

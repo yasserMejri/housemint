@@ -1,46 +1,7 @@
-# Marvin ★★
+# House Mint ★★
 
-React and Redux, Webpack 2 boilerplate.
+House Mint Frontend
 
-Marvin is internal project by [Work & Co](https://work.co).
-We love React and use it a lot. So Marvin is meant to be a starting point for our React projects.
-But as we love open source too, it is publicly available for anyone interested in using it.
-
-![Marvin](/marvin.jpg)
-
-Name comes from a fictional character [Marvin](https://en.wikipedia.org/wiki/Marvin_(character)), android from the [The Hitchhiker's Guide to the Galaxy](https://en.wikipedia.org/wiki/The_Hitchhiker%27s_Guide_to_the_Galaxy) book as a homage to it's author [Douglas Adams](https://en.wikipedia.org/wiki/Douglas_Adams).
-
-## Table of contents
-* [What is this?](#user-content-what-is-this)
-* [Features](#user-content-features)
-* [Setup](#user-content-setup)
-* [Running in dev mode](#user-content-running-in-dev-mode)
-* [Build (production)](#user-content-build-production)
-* [Running in preview production mode](#user-content-running-in-preview-production-mode)
-* [Linting](#user-content-linting)
-* [Git hooks](#user-content-git-hooks)
-* [Changelog](#user-content-changelog)
-
-
-## What is this?
-
-Boilerplate for kicking off React/Redux applications.
-
-It includes complete, minimal react app.
-By complete we mean it has examples for:
-
-- components (both container/views and regular ones)
-- routes
-- reducers (redux)
-- actions (both sync and async),
-- SASS (with autoprefixer)<sup>1</sup>
-- dummy API
-- using assets (in CSS and components)
-- imports relative to the app root
-
-![Example dashboard](/marvin-screenshot.png)
-
-<sup>1</sup> Using source maps breaks urls in the CSS loader - https://github.com/webpack/css-loader/issues/232. Try [this](https://github.com/webpack/css-loader/issues/232#issuecomment-240449998) to fix it (but it breaks testing from local network).
 
 ## Features
 
@@ -63,18 +24,9 @@ By complete we mean it has examples for:
 
 ## TODO
 
-- [x] Tree shaking build
-- [ ] Switch to [redux-saga](https://github.com/redux-saga/redux-saga)
-- [ ] Universal rendering
-- [ ] Server async data
-- [ ] Internationalization
-
-Other nice to have features
-
-- [x] Generating ~~icon font from SVG~~ SVG sprite
-- [ ] Feature detection (Modernizr) (?)
-- [ ] Google analytics (?)
-- [ ] Error reporting (?)
+- [x] Login / Register
+- [ ] Dashboard
+- [ ] ...
 
 ## Setup
 
@@ -93,11 +45,6 @@ $ npm start
 Visit `http://localhost:3000/` from your browser of choice.
 Server is visible from the local network as well.
 
-### Running it with [webpack dashboard](https://github.com/FormidableLabs/webpack-dashboard)
-
-```
-$ npm run dev
-```
 
 **Note for Windows users:** webpack dashboard still have issues with Windows, so use `npm start` until those are resolved.
 
@@ -167,83 +114,6 @@ To remove it, run this task:
 ```
 npm run hook-remove
 ```
-
-## Components
-
-### SVG icons - `Icon`
-
-Add SVG icons to `source/assets/icons` folder, and they will automatically be added to SVG sprite.
-
-**Usage:**
-
-```
-import Icon from 'components/Global/Icon';
-
-<Icon glyph='triangle' />
-```
-
-**Available props**
-
-```
-glyph       // required, name of the SVG icon
-className   // optional, additional CSS class, default ones are `Icon Icon--iconName`
-width       // optional, default 24
-height      // optional, default 24
-style       // optional, CSS style object
-```
-
-
------
-
-## Changelog
-
-#### 0.1.7
-
-* Migrated to React Router 4.x (thanks @shams-ali)
-* Added .editorconfig file
-* Fixed couple of typos
-
-#### 0.1.6
-
-* Added SVG icon loader (SVG sprite) [#18](https://github.com/workco/react-redux-webpack2-boilerplate/pull/18)
-
-#### 0.1.5
-
-* `npm start` is not using `webpack-dashboard` by default cause it still has issues with Windows
-* Moved `prop-types` from `devDependencies` to `dependencies`
-
-#### 0.1.4
-
-* Resolved React 15.5 [deprecation warnings](https://facebook.github.io/react/blog/2017/04/07/react-v15.5.0.html#new-deprecation-warnings)
-
-#### 0.1.3
-
-* Made sure tree shaking is working
-* Removed DevTools from the code, but it still works if you have browser extension
-
-#### 0.1.2
-
-* Fixed duplicating vendor bundle code
-* Reduced overall bundle size by disabling `devtool` in production
-
-#### 0.1.1
-
-* Fixed running it on Windows machines
-
-#### 0.1.0
-
-* Updated `webpack` to a stable version
-
-#### 0.0.3
-
-* Added pre-push git hook
-* Added `preview` task
-
-#### 0.0.2
-
-* Added Redux Dev Tools.
-* Renamed `client` to `source`
-* Made sure `logger` and `DevTools` are loaded only in development
 
 #### 0.0.1
 

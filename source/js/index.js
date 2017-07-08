@@ -10,6 +10,9 @@ import rootReducer from 'reducers';
 
 import App from 'views/App';
 
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+
+
 // Load SCSS
 import '../scss/app.scss';
 
@@ -51,8 +54,10 @@ if (isProduction) {
 
 // Render it to DOM
 ReactDOM.render(
-  <Provider store={ store }>
-    <App />
-  </Provider>,
+  <MuiThemeProvider>
+    <Provider store={ store }>
+      <App />
+    </Provider>
+  </MuiThemeProvider>,
   document.getElementById('root')
 );

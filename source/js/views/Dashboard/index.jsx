@@ -4,12 +4,14 @@ import PropTypes from 'prop-types';
 import { testAction, testAsync } from 'actions/app';
 import Icon from 'components/Global/Icon';
 import bookImg from '../../../assets/img/book2.jpg';
+import { routeCodes } from 'views/App'
 
 @connect(state => ({
   asyncData: state.app.get('asyncData'),
   asyncError: state.app.get('asyncError'),
   asyncLoading: state.app.get('asyncLoading'),
   counter: state.app.get('counter'),
+  loggedin: state.auth.get('login')
 }))
 export default class Dashboard extends Component {
   static propTypes = {
@@ -26,10 +28,14 @@ export default class Dashboard extends Component {
 
     this.handleAsyncButtonClick = this.handleAsyncButtonClick.bind(this);
     this.handleTestButtonClick = this.handleTestButtonClick.bind(this);
+
   }
 
   handleAsyncButtonClick() {
     const { dispatch } = this.props;
+    console.log("STATE from REDUX"); 
+    console.log(this.props.all);
+    console.log("/STATE from REDUX"); 
 
     dispatch(testAsync());
   }
@@ -46,57 +52,63 @@ export default class Dashboard extends Component {
       asyncError,
       asyncLoading,
       counter,
+      loggedin
     } = this.props;
 
-    return (
-      <div className='Dashboard'>
-        <h1>Marvin</h1>
-        <p>
-          Boilerplate for kicking off React/Redux applications.
-        </p>
+    if(loggedin) {
+      return (
+        <div className='Dashboard'>
+          <h1>Marvin</h1>
+          <p>
+            Boilerplate for kicking off React/Redux applications.
+          </p>
 
-        <hr />
+          <hr />
 
-        <h2>Examples</h2>
+          <h2>Examples</h2>
 
-        <h3>Synchronous action</h3>
-        <div className='Example'>
-          <p>Counter: { counter }</p>
-          <button onClick={ this.handleTestButtonClick }>
-            Increase
-          </button>
+          <h3>Synchronous action</h3>
+          <div className='Example'>
+            <p>Counter: { counter }</p>
+            <button onClick={ this.handleTestButtonClick }>
+              Increase
+            </button>
+          </div>
+
+          <h3>Async action example</h3>
+          <div className='Example'>
+            { asyncData && <p>{ asyncData }</p> }
+            { asyncLoading && <p>Loading...</p> }
+            { asyncError && <p>Error: { asyncError }</p> }
+            <button
+              disabled={ asyncLoading }
+              onClick={ this.handleAsyncButtonClick }
+            >
+              Get async data
+            </button>
+          </div>
+
+          <h3>Background image</h3>
+          <div className='Example'>
+            <div className='BackgroundImgExample' />
+          </div>
+
+          <h3>Image imported to the component</h3>
+          <div className='Example'>
+            <img src={ bookImg } alt='' className='ImgExample' />
+          </div>
+
+          <h3>SVG sprite icon set</h3>
+          <div className='Example'>
+            <Icon glyph='square' />
+            <Icon glyph='circle' />
+            <Icon glyph='triangle' />
+          </div>
         </div>
-
-        <h3>Async action example</h3>
-        <div className='Example'>
-          { asyncData && <p>{ asyncData }</p> }
-          { asyncLoading && <p>Loading...</p> }
-          { asyncError && <p>Error: { asyncError }</p> }
-          <button
-            disabled={ asyncLoading }
-            onClick={ this.handleAsyncButtonClick }
-          >
-            Get async data
-          </button>
-        </div>
-
-        <h3>Background image</h3>
-        <div className='Example'>
-          <div className='BackgroundImgExample' />
-        </div>
-
-        <h3>Image imported to the component</h3>
-        <div className='Example'>
-          <img src={ bookImg } alt='' className='ImgExample' />
-        </div>
-
-        <h3>SVG sprite icon set</h3>
-        <div className='Example'>
-          <Icon glyph='square' />
-          <Icon glyph='circle' />
-          <Icon glyph='triangle' />
-        </div>
-      </div>
-    );
+      );
+    } else {
+      this.props.history.push(routeCodes.LOGIN);
+      return null;
+    }
   }
 }
